@@ -1,23 +1,340 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PaperPilot — PDF tools</title><link rel="stylesheet" href="/styles.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script></head>
-<body><header class="topbar"><a class="brand" href="/"><span class="brand-mark">P</span><span>paperpilot</span></a><nav><a href="#tools">All tools</a><a href="#how">How it works</a></nav><div class="secure">● Files stay private</div></header>
-<main><section class="hero"><div class="eyebrow">YOUR EVERYDAY PDF WORKSPACE</div><h1>Everything you need to<br><span>work with PDFs.</span></h1><p>Merge, split, compress, organize and edit PDFs in a few clicks.</p><div class="hero-pills"><span>✓ Simple</span><span>✓ Fast</span><span>✓ No account needed</span></div></section>
-<section class="workspace"><div class="tools-panel"><div class="section-head"><div><h2>Choose a tool</h2><p>Start with a PDF or select a tool below.</p></div><span class="tool-count">10 tools</span></div><div class="tool-grid" id="tools">
-<button class="tool-card active" data-tool="compress"><span class="tool-icon red">⇣</span><strong>Compress PDF</strong><small>Reduce file size</small></button>
-<button class="tool-card" data-tool="merge"><span class="tool-icon purple">▤</span><strong>Merge PDF</strong><small>Combine documents</small></button>
-<button class="tool-card" data-tool="split"><span class="tool-icon orange">✂</span><strong>Split PDF</strong><small>One file per page</small></button>
-<button class="tool-card" data-tool="extract"><span class="tool-icon blue">▣</span><strong>Extract pages</strong><small>Save selected pages</small></button>
-<button class="tool-card" data-tool="rotate"><span class="tool-icon teal">↻</span><strong>Rotate PDF</strong><small>Fix page orientation</small></button>
-<button class="tool-card" data-tool="organize"><span class="tool-icon purple">☷</span><strong>Organize PDF</strong><small>Delete / reorder pages</small></button>
-<button class="tool-card" data-tool="watermark"><span class="tool-icon orange">T</span><strong>Watermark PDF</strong><small>Stamp your document</small></button>
-<button class="tool-card" data-tool="numbers"><span class="tool-icon blue">#</span><strong>Page numbers</strong><small>Number each page</small></button>
-<button class="tool-card" data-tool="protect"><span class="tool-icon teal">▣</span><strong>Protect PDF</strong><small>Add a password</small></button>
-<button class="tool-card" data-tool="edit"><span class="tool-icon red">✎</span><strong>Remove pages</strong><small>Delete unwanted pages</small></button>
-</div></div>
-<div class="work-panel"><div class="panel-title"><div><span class="step">STEP 1</span><h2 id="toolTitle">Compress PDF</h2><p id="toolDesc">Choose compression quality and optionally set a target file size.</p></div><span class="pdf-badge">PDF</span></div>
-<div class="dropzone" id="dropzone"><input type="file" id="fileInput" accept="application/pdf,.pdf" multiple hidden><div class="upload-symbol">↑</div><h3>Drop your PDF here</h3><p>or</p><button class="primary" id="browseBtn">Select PDF file</button><small>PDF files · Up to 30 MB each</small></div>
-<div id="fileList" class="file-list hidden"></div>
-<div id="previewArea" class="preview-area hidden"><div class="preview-head"><div><strong>Document preview</strong><small id="previewMeta">Pages render locally in your browser</small></div><div class="preview-nav"><button id="prevPage" aria-label="Previous page">‹</button><span id="pageCounter">1 / 1</span><button id="nextPage" aria-label="Next page">›</button></div></div><div class="pdf-canvas-wrap"><canvas id="pdfCanvas"></canvas></div><div id="thumbnails" class="thumbnails"></div></div>
-<div id="options" class="options"><div class="option-label">Compression level</div><div class="quality-options"><label class="quality-card"><input type="radio" name="level" value="light"><span><b>Light</b><small>Better quality</small></span></label><label class="quality-card selected"><input type="radio" name="level" value="recommended" checked><span><b>Recommended</b><small>Balanced</small></span></label><label class="quality-card"><input type="radio" name="level" value="strong"><span><b>Extreme</b><small>Smaller file</small></span></label></div><label class="field-label" for="targetMb">Target size <span>optional</span></label><div class="input-suffix"><input id="targetMb" type="number" min="0.1" max="30" step="0.1" placeholder="e.g. 2.0"><span>MB</span></div><p class="hint">Aggressive compression may rasterize pages and reduce text selectability. The requested size is a target, not a guarantee.</p></div>
-<div id="status" class="status hidden" role="status"></div><button id="runBtn" class="run-btn" disabled>Compress PDF <span>→</span></button><div class="privacy-note">⌑ Your files are processed by this app and are not saved to an account.</div></div></section>
-<section id="how" class="how"><h2>PDF work, without the busywork.</h2><div class="how-grid"><div><b>01</b><h3>Choose a tool</h3><p>Pick the action you need from the toolbox.</p></div><div><b>02</b><h3>Preview your file</h3><p>Check your document before processing it.</p></div><div><b>03</b><h3>Download the result</h3><p>Get the processed PDF or ZIP straight away.</p></div></div></section></main><footer>PaperPilot · Independent PDF utilities <span>Do not upload documents you are not authorized to process.</span></footer><script src="/app.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary SEO -->
+  <title>Free Online PDF Tools | Compress, Merge & Split PDF – PaperPilot</title>
+  <meta name="description"
+        content="Use PaperPilot's free online PDF tools to compress, merge, split, extract, rotate and organize PDF pages. Preview documents and download your processed PDFs.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="PaperPilot">
+
+  <!-- Canonical URL: update if your domain changes -->
+  <link rel="canonical"
+        href="https://paperpilot-pdf-tools.onrender.com/">
+
+  <!-- Browser theme -->
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Open Graph: social sharing previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:title"
+        content="PaperPilot – Free Online PDF Tools">
+  <meta property="og:description"
+        content="Compress, merge, split, rotate and organize PDF files with PaperPilot's easy-to-use online PDF workspace.">
+  <meta property="og:url"
+        content="https://paperpilot-pdf-tools.onrender.com/">
+  <meta property="og:site_name" content="PaperPilot">
+
+  <!-- Twitter / X sharing preview -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title"
+        content="PaperPilot – Free Online PDF Tools">
+  <meta name="twitter:description"
+        content="Free online PDF utilities to compress, merge, split and organize PDF files.">
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- PDF.js for document preview -->
+  <script defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+
+<body>
+<header class="topbar">
+  <a class="brand" href="/" aria-label="PaperPilot home">
+    <span class="brand-mark">P</span>
+    <span>paperpilot</span>
+  </a>
+
+  <nav aria-label="Main navigation">
+    <a href="#tools">PDF tools</a>
+    <a href="#how">How it works</a>
+  </nav>
+
+  <div class="secure">● Files stay private</div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="eyebrow">YOUR EVERYDAY PDF WORKSPACE</div>
+
+    <h1 id="hero-title">
+      Free Online PDF Tools to
+      <br>
+      <span>Work Smarter with PDFs</span>
+    </h1>
+
+    <p>
+      Compress PDF files, merge documents, split pages, rotate PDFs
+      and organize your documents with PaperPilot's easy-to-use
+      online PDF tools.
+    </p>
+
+    <div class="hero-pills">
+      <span>✓ Simple to use</span>
+      <span>✓ No account needed</span>
+      <span>✓ Preview before processing</span>
+    </div>
+  </section>
+
+  <section class="workspace" aria-label="Online PDF workspace">
+    <div class="tools-panel">
+      <div class="section-head">
+        <div>
+          <h2 id="tools">Free PDF Tools</h2>
+          <p>Choose a PDF utility to get started.</p>
+        </div>
+        <span class="tool-count">10 tools</span>
+      </div>
+
+      <div class="tool-grid" id="tool-grid">
+        <button class="tool-card active" data-tool="compress" type="button">
+          <span class="tool-icon red" aria-hidden="true">⇣</span>
+          <strong>Compress PDF</strong>
+          <small>Reduce PDF file size</small>
+        </button>
+
+        <button class="tool-card" data-tool="merge" type="button">
+          <span class="tool-icon purple" aria-hidden="true">▤</span>
+          <strong>Merge PDF</strong>
+          <small>Combine PDF files</small>
+        </button>
+
+        <button class="tool-card" data-tool="split" type="button">
+          <span class="tool-icon orange" aria-hidden="true">✂</span>
+          <strong>Split PDF</strong>
+          <small>Separate PDF pages</small>
+        </button>
+
+        <button class="tool-card" data-tool="extract" type="button">
+          <span class="tool-icon blue" aria-hidden="true">▣</span>
+          <strong>Extract PDF Pages</strong>
+          <small>Save selected pages</small>
+        </button>
+
+        <button class="tool-card" data-tool="rotate" type="button">
+          <span class="tool-icon teal" aria-hidden="true">↻</span>
+          <strong>Rotate PDF</strong>
+          <small>Correct page orientation</small>
+        </button>
+
+        <button class="tool-card" data-tool="organize" type="button">
+          <span class="tool-icon purple" aria-hidden="true">☷</span>
+          <strong>Organize PDF</strong>
+          <small>Delete or reorder pages</small>
+        </button>
+
+        <button class="tool-card" data-tool="watermark" type="button">
+          <span class="tool-icon orange" aria-hidden="true">T</span>
+          <strong>Watermark PDF</strong>
+          <small>Add a text watermark</small>
+        </button>
+
+        <button class="tool-card" data-tool="numbers" type="button">
+          <span class="tool-icon blue" aria-hidden="true">#</span>
+          <strong>Add PDF Page Numbers</strong>
+          <small>Number document pages</small>
+        </button>
+
+        <button class="tool-card" data-tool="protect" type="button">
+          <span class="tool-icon teal" aria-hidden="true">▣</span>
+          <strong>Protect PDF</strong>
+          <small>Password-protect a PDF</small>
+        </button>
+
+        <button class="tool-card" data-tool="edit" type="button">
+          <span class="tool-icon red" aria-hidden="true">✎</span>
+          <strong>Remove PDF Pages</strong>
+          <small>Delete unwanted pages</small>
+        </button>
+      </div>
+    </div>
+
+    <div class="work-panel">
+      <div class="panel-title">
+        <div>
+          <span class="step">STEP 1</span>
+          <h2 id="toolTitle">Compress PDF</h2>
+          <p id="toolDesc">
+            Choose compression quality and optionally set a target file size.
+          </p>
+        </div>
+        <span class="pdf-badge">PDF</span>
+      </div>
+
+      <div class="dropzone" id="dropzone">
+        <input type="file" id="fileInput"
+               accept="application/pdf,.pdf" multiple hidden>
+
+        <div class="upload-symbol" aria-hidden="true">↑</div>
+        <h3>Upload a PDF file</h3>
+        <p>Drag and drop your document here, or browse your device.</p>
+
+        <button class="primary" id="browseBtn" type="button">
+          Select PDF file
+        </button>
+
+        <small>PDF files · Up to 30 MB each</small>
+      </div>
+
+      <div id="fileList" class="file-list hidden"></div>
+
+      <div id="previewArea" class="preview-area hidden">
+        <div class="preview-head">
+          <div>
+            <strong>PDF Document Preview</strong>
+            <small id="previewMeta">
+              Pages render locally in your browser
+            </small>
+          </div>
+
+          <div class="preview-nav">
+            <button id="prevPage" type="button"
+                    aria-label="Previous page">‹</button>
+            <span id="pageCounter">1 / 1</span>
+            <button id="nextPage" type="button"
+                    aria-label="Next page">›</button>
+          </div>
+        </div>
+
+        <div class="pdf-canvas-wrap">
+          <canvas id="pdfCanvas"></canvas>
+        </div>
+
+        <div id="thumbnails" class="thumbnails"></div>
+      </div>
+
+      <div id="options" class="options">
+        <div class="option-label">Compression level</div>
+
+        <div class="quality-options">
+          <label class="quality-card">
+            <input type="radio" name="level" value="light">
+            <span>
+              <b>Light</b>
+              <small>Prioritize quality</small>
+            </span>
+          </label>
+
+          <label class="quality-card selected">
+            <input type="radio" name="level"
+                   value="recommended" checked>
+            <span>
+              <b>Recommended</b>
+              <small>Balanced compression</small>
+            </span>
+          </label>
+
+          <label class="quality-card">
+            <input type="radio" name="level" value="strong">
+            <span>
+              <b>Extreme</b>
+              <small>Prioritize smaller size</small>
+            </span>
+          </label>
+        </div>
+
+        <label class="field-label" for="targetMb">
+          Target PDF size <span>optional</span>
+        </label>
+
+        <div class="input-suffix">
+          <input id="targetMb" type="number"
+                 min="0.1" max="30" step="0.1"
+                 placeholder="e.g. 2.0">
+          <span>MB</span>
+        </div>
+
+        <p class="hint">
+          Target size is not guaranteed. Strong compression may reduce
+          image quality or text selectability.
+        </p>
+      </div>
+
+      <div id="status" class="status hidden" role="status"
+           aria-live="polite"></div>
+
+      <button id="runBtn" class="run-btn" type="button" disabled>
+        Compress PDF <span aria-hidden="true">→</span>
+      </button>
+
+      <div class="privacy-note">
+        ⌑ Files are processed by this app. Review the privacy policy
+        for details about server-side processing and file retention.
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="how" aria-labelledby="how-title">
+    <h2 id="how-title">How to Use PaperPilot PDF Tools</h2>
+
+    <p>
+      Process PDF documents online with a simple workflow.
+      Select a tool, preview your document and download the result.
+    </p>
+
+    <div class="how-grid">
+      <div>
+        <b>01</b>
+        <h3>Choose a PDF tool</h3>
+        <p>Select compression, merging, splitting or another supported tool.</p>
+      </div>
+
+      <div>
+        <b>02</b>
+        <h3>Upload and preview</h3>
+        <p>Choose your document and check the preview before processing.</p>
+      </div>
+
+      <div>
+        <b>03</b>
+        <h3>Download your PDF</h3>
+        <p>Download the processed document when the operation completes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="seo-content" aria-labelledby="about-title">
+    <h2 id="about-title">Free Online PDF Tools for Everyday Tasks</h2>
+
+    <p>
+      PaperPilot brings common PDF document tasks together in one
+      convenient workspace. Depending on the selected tool, you can
+      reduce PDF file size, combine documents, separate pages, rotate
+      pages, organize a document, add watermarks or page numbers, and
+      protect supported files with a password.
+    </p>
+
+    <h3>Compress PDF Files</h3>
+    <p>
+      Reduce PDF file size when you need a smaller document for sharing
+      or uploading. Choose the available compression setting and check
+      the resulting file before using it.
+    </p>
+
+    <h3>Merge and Split PDF Documents</h3>
+    <p>
+      Combine multiple PDF documents into one file or separate a
+      document into smaller parts. Preview the source document and
+      confirm the output before sharing it.
+    </p>
+
+    <h3>Organize PDF Pages</h3>
+    <p>
+      Use the available page tools to extract, rotate, reorder or
+      remove pages and prepare your document for its intended use.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <span>PaperPilot · Independent PDF utilities</span>
+  <span>Only process documents you are authorized to use.</span>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>
